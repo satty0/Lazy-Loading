@@ -1,0 +1,29 @@
+<div class="container table" *ngIf=" {vm:  data$ | async  } as data">
+    <p-table [value]="data.vm??[]" [paginator]="true" [rows]="10" [totalRecords]="totalRecords" [lazy]="true"
+        responsiveLayout="scroll" [loading]="loading" (onLazyLoad)="loadCustomers($event)">
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th>
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th>User ID </th>
+                <th>Name </th>
+                <th pSortableColumn="trips">Trip <p-sortIcon field="trips"></p-sortIcon>
+                </th>
+                <th>country </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-customer>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="customer"></p-tableCheckbox>
+                </td>
+                <td>{{customer._id}}</td>
+                <td>{{customer.name}}</td>
+                <td>{{customer.trips}}</td>
+                <td>{{customer.airline[0].country}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
