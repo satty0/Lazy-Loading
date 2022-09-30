@@ -1,6 +1,6 @@
 <div class="container table" *ngIf=" {vm:  data$ | async  } as data">
     <p-table [value]="data.vm??[]" [paginator]="true" [rows]="10" [totalRecords]="totalRecords" [lazy]="true"
-        responsiveLayout="scroll" [loading]="loading" (onLazyLoad)="loadCustomers($event)">
+        responsiveLayout="scroll"  (onLazyLoad)="loadCustomers($event)">
 
         <ng-template pTemplate="header">
             <tr>
